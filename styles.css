@@ -74,6 +74,9 @@
   --gradient-accent: linear-gradient(135deg, var(--indigo-accent) 0%, var(--violet-accent) 45%, var(--amber-accent) 100%);
   --gradient-progress: linear-gradient(90deg, var(--indigo-accent), var(--amber-accent));
   --gradient-skill: linear-gradient(90deg, var(--indigo-accent), var(--emerald-accent));
+
+  --font-heading: 'Sora', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
 }
 
 /* =========================================================================
@@ -86,7 +89,7 @@
 }
 
 body {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: var(--font-body);
   background-color: var(--bg-space);
   background-image: 
     radial-gradient(at 12% 18%, var(--gradient-body-1) 0px, transparent 52%),
@@ -235,7 +238,7 @@ body {
 
 /* Typography styles */
 .slide-title {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-heading);
   font-size: 2.6rem;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -246,7 +249,7 @@ body {
 }
 
 .slide-subtitle {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-heading);
   font-size: 1.05rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -317,7 +320,7 @@ body {
 }
 
 .cover-topic {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-heading);
   font-size: 0.95rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -449,7 +452,7 @@ body {
 }
 
 .card-title {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-heading);
   font-size: 1.2rem;
   font-weight: 600;
   color: var(--text-primary);
@@ -535,7 +538,7 @@ body {
 }
 
 .comparison-col h3 {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-heading);
   font-size: 1.4rem;
   font-weight: 700;
   display: flex;
@@ -598,9 +601,9 @@ body {
 }
 
 .factor-card:hover { transform: translateY(-5px); background: rgba(255, 255, 255, 0.04); border-color: var(--indigo-border-strong); }
-.factor-num { position: absolute; top: 10px; right: 15px; font-family: 'Outfit', sans-serif; font-size: 1.5rem; font-weight: 800; color: rgba(255, 255, 255, 0.03); }
+.factor-num { position: absolute; top: 10px; right: 15px; font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; color: rgba(255, 255, 255, 0.03); }
 .factor-icon { font-size: 2.2rem; color: var(--indigo-accent); margin-bottom: 1.2rem; text-shadow: 0 0 10px var(--indigo-glow); }
-.factor-title { font-family: 'Outfit', sans-serif; font-size: 0.95rem; font-weight: 600; color: var(--text-primary); }
+.factor-title { font-family: var(--font-heading); font-size: 0.95rem; font-weight: 600; color: var(--text-primary); }
 
 /* Social Media Real Smartphone Layout */
 .social-media-layout {
@@ -652,7 +655,7 @@ body {
   padding: 2rem;
 }
 
-.comparison-fact-card h3 { font-family: 'Outfit', sans-serif; color: var(--crimson-accent); margin-bottom: 1rem; }
+.comparison-fact-card h3 { font-family: var(--font-heading); color: var(--crimson-accent); margin-bottom: 1rem; }
 
 /* Self-Talk Bubbles */
 .talk-layout {
@@ -664,7 +667,7 @@ body {
 @media (max-width: 768px) { .talk-layout { grid-template-columns: 1fr; } }
 
 .talk-column { display: flex; flex-direction: column; gap: 1.2rem; }
-.talk-column h3 { font-family: 'Outfit', sans-serif; font-size: 1.35rem; font-weight: 700; margin-bottom: 0.5rem; }
+.talk-column h3 { font-family: var(--font-heading); font-size: 1.35rem; font-weight: 700; margin-bottom: 0.5rem; }
 .talk-column.negative h3 { color: var(--crimson-accent); }
 .talk-column.positive h3 { color: var(--emerald-accent); }
 
@@ -715,7 +718,7 @@ body {
 }
 
 .posture-content h3 {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-heading);
   font-size: 1.35rem;
   font-weight: 700;
   display: flex;
@@ -812,7 +815,7 @@ body {
 }
 
 .cz-info-card-split h3 {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-heading);
   font-size: 1.4rem;
   margin-bottom: 1rem;
   color: var(--indigo-accent);
@@ -862,7 +865,7 @@ body {
 }
 
 .habits-insight p {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-heading);
   font-size: 1rem;
   font-weight: 500;
   color: var(--text-primary);
@@ -907,7 +910,7 @@ body {
 }
 
 .habit-step-num {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-heading);
   font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.12em;
@@ -929,7 +932,7 @@ body {
 }
 
 .habit-title {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-heading);
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--text-primary);
@@ -995,7 +998,7 @@ body {
   border-radius: 50px;
   background: rgba(255, 255, 255, 0.02);
   border: 2px solid var(--border-glass);
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-heading);
   font-weight: 700;
   font-size: 1rem;
   text-align: center;
@@ -1048,7 +1051,7 @@ body {
 .iceberg-part { width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; }
 
 .iceberg-visible { height: 130px; padding: 1rem; }
-.iceberg-visible h3 { font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 800; letter-spacing: 0.05em; }
+.iceberg-visible h3 { font-family: var(--font-heading); font-size: 2rem; font-weight: 800; letter-spacing: 0.05em; }
 
 .iceberg-hidden {
   flex: 1;
@@ -1164,7 +1167,7 @@ body {
 }
 
 .story-stat-value {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-heading);
   font-size: 1.35rem;
   font-weight: 800;
   line-height: 1;
@@ -1214,7 +1217,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-heading);
   font-weight: 800;
   font-size: 0.85rem;
   color: var(--story-color);
@@ -1223,7 +1226,7 @@ body {
 }
 
 .story-author-details h4 {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-heading);
   font-size: 1.05rem;
   font-weight: 700;
   color: var(--text-primary);
@@ -1315,7 +1318,7 @@ body {
   flex-shrink: 0;
 }
 
-.academic-card-details h4 { font-family: 'Outfit', sans-serif; font-size: 1.05rem; color: var(--text-primary); margin-bottom: 0.3rem; }
+.academic-card-details h4 { font-family: var(--font-heading); font-size: 1.05rem; color: var(--text-primary); margin-bottom: 0.3rem; }
 .academic-card-details p { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.4; }
 
 /* Practical Strategies checklist split with photo bg */
@@ -1359,7 +1362,7 @@ body {
 }
 
 .strategy-item.active .strategy-checkbox { background: var(--indigo-accent); border-color: var(--indigo-accent); color: var(--text-primary); box-shadow: 0 0 8px var(--indigo-glow); }
-.strategy-text { font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 600; color: var(--text-secondary); }
+.strategy-text { font-family: var(--font-heading); font-size: 1rem; font-weight: 600; color: var(--text-secondary); }
 .strategy-item.active .strategy-text { color: var(--text-primary); }
 
 .strategy-details-panel-img {
@@ -1386,7 +1389,7 @@ body {
   box-shadow: 0 0 10px var(--indigo-glow);
 }
 
-.strategy-details-title { font-family: 'Outfit', sans-serif; font-size: 1.4rem; color: var(--text-primary); margin-bottom: 0.8rem; }
+.strategy-details-title { font-family: var(--font-heading); font-size: 1.4rem; color: var(--text-primary); margin-bottom: 0.8rem; }
 .strategy-details-desc { font-size: 0.95rem; color: var(--text-primary); line-height: 1.5; }
 
 /* Key Lessons Layout */
@@ -1479,7 +1482,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-heading);
   font-size: 0.82rem;
   font-weight: 800;
   color: var(--lesson-color);
@@ -1520,7 +1523,7 @@ body {
 }
 
 .lesson-text {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-heading);
   font-size: 1.02rem;
   font-weight: 500;
   color: var(--text-primary);
@@ -1583,7 +1586,7 @@ body {
 }
 
 .conclusion-emphasis {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-heading);
   font-size: 1.45rem;
   font-weight: 600;
   color: var(--text-primary);
@@ -1633,7 +1636,7 @@ body {
 }
 
 .conclusion-pillar span {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-heading);
   font-size: 0.88rem;
   font-weight: 600;
   color: var(--text-primary);
@@ -1657,6 +1660,51 @@ body {
   font-size: 0.8rem;
 }
 
+.conclusion-subtitle {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--amber-accent);
+  margin-top: -0.5rem;
+  opacity: 0;
+  animation: conclusionEnter 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.05s forwards;
+}
+
+.conclusion-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  opacity: 0;
+  animation: conclusionEnter 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards;
+}
+
+.conclusion-thanks {
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
+.conclusion-questions-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1.75rem;
+  border-radius: 999px;
+  background: var(--bg-glass-card);
+  border: 1px solid var(--amber-border);
+  box-shadow: 0 0 24px var(--amber-glow);
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--amber-accent);
+}
+
+.conclusion-questions-card i {
+  font-size: 1.25rem;
+}
+
 @media (max-width: 640px) {
   .conclusion-emphasis {
     font-size: 1.2rem;
@@ -1671,7 +1719,7 @@ body {
 .thank-you-wrapper { text-align: center; padding: 5rem 2rem; }
 
 .thank-you-title {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-heading);
   font-size: 4.5rem;
   font-weight: 800;
   background: var(--gradient-accent);
@@ -1681,7 +1729,7 @@ body {
   animation: glowPulse 2s infinite alternate;
 }
 
-.thank-you-subtitle { font-size: 1.8rem; color: var(--amber-accent); margin-bottom: 3rem; font-family: 'Outfit', sans-serif; text-shadow: 0 0 18px var(--amber-glow); }
+.thank-you-subtitle { font-size: 1.8rem; color: var(--amber-accent); margin-bottom: 3rem; font-family: var(--font-heading); text-shadow: 0 0 18px var(--amber-glow); }
 
 .thank-you-card {
   display: inline-flex;
@@ -1726,7 +1774,7 @@ body {
 
 .slides-sidebar.hidden { transform: translateX(-100%); }
 .sidebar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
-.sidebar-header h3 { font-family: 'Outfit', sans-serif; font-size: 1.3rem; font-weight: 700; }
+.sidebar-header h3 { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 700; }
 
 .btn-close-sidebar {
   background: transparent;
@@ -1762,7 +1810,7 @@ body {
 .slide-list-items li.active { background: var(--indigo-bg); border-color: var(--indigo-border); color: var(--indigo-accent); }
 
 .slide-num {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-heading);
   font-weight: 700;
   width: 26px;
   height: 26px;
@@ -1810,7 +1858,7 @@ body {
   padding: 0.6rem 1.1rem;
   border-radius: 12px;
   cursor: pointer;
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-heading);
   font-weight: 600;
   font-size: 0.9rem;
   display: inline-flex;
@@ -1833,7 +1881,7 @@ body {
 .accent-btn:disabled { background: var(--text-muted); cursor: not-allowed; box-shadow: none; transform: none; }
 
 .slide-counter {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-heading);
   font-weight: 700;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid var(--border-glass);
@@ -1872,7 +1920,7 @@ body {
 }
 
 .console-title {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-heading);
   font-weight: 700;
   font-size: 1.15rem;
   color: var(--indigo-accent);
@@ -1897,7 +1945,7 @@ body {
 .timer-widget button:hover { color: var(--text-primary); }
 
 .console-body { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
-.panel-label { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 0.75rem; letter-spacing: 0.15em; color: var(--text-muted); padding: 1rem 1.5rem 0.4rem; }
+.panel-label { font-family: var(--font-heading); font-weight: 700; font-size: 0.75rem; letter-spacing: 0.15em; color: var(--text-muted); padding: 1rem 1.5rem 0.4rem; }
 
 .notes-panel { flex: 1.4; display: flex; flex-direction: column; overflow: hidden; border-bottom: 1px solid var(--border-glass); }
 
@@ -1938,7 +1986,7 @@ body {
 }
 
 .preview-num {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-heading);
   font-size: 0.75rem;
   font-weight: 700;
   color: var(--indigo-accent);
@@ -1948,7 +1996,7 @@ body {
 }
 
 .preview-title {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-heading);
   font-size: 1.15rem;
   font-weight: 600;
   color: var(--text-primary);

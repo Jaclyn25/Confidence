@@ -1,5 +1,5 @@
 // =========================================================================
-// SLIDES DATASET (21 Slides: English Content + English Speaker Notes + Real Photos)
+// SLIDES DATASET (15 Slides: English Content + English Speaker Notes + Real Photos)
 // =========================================================================
 const slidesData = [
   {
@@ -100,34 +100,10 @@ const slidesData = [
   },
   {
     id: 6,
-    title: "How Personality Is Formed",
-    subtitle: "The Five Core Pillars of Identity",
-    type: "factors",
-    factors: [
-      { name: "Family Environment", icon: "fa-house-chimney" },
-      { name: "Childhood Experiences", icon: "fa-child" },
-      { name: "Education", icon: "fa-graduation-cap" },
-      { name: "Social Interactions", icon: "fa-users" },
-      { name: "Personal Habits", icon: "fa-dumbbell" }
-    ],
-    speakerNotes: `
-      <p><strong>What to say:</strong></p>
-      <p>Personality acts as the vessel carrying our self-confidence. It is shaped gradually by several overlapping forces:</p>
-      <ul>
-        <li>Family environments and the primary support we receive as children.</li>
-        <li>Childhood milestones, both positive reinforcements and setbacks.</li>
-        <li>Schools and educators who mentored us.</li>
-        <li>Social peer networks and cultural backgrounds.</li>
-        <li>And lastly, our repeated daily habits.</li>
-      </ul>
-    `
-  },
-  {
-    id: 7,
     title: "Why People Lose Confidence",
     subtitle: "The Barriers to Self-Belief",
     type: "grid",
-    description: "Several factors can weaken self-confidence. Over time, these factors create self-doubt and reduce motivation.",
+    description: "Several factors can weaken self-confidence. Overthinking and analysis paralysis can also trap people in inaction, slowly eroding self-belief.",
     items: [
       { title: "Fear of Failure", desc: "Avoiding risks to protect oneself from embarrassment.", icon: "fa-triangle-exclamation" },
       { title: "Negative Criticism", desc: "Internalizing harsh words from parents, peers, or bosses.", icon: "fa-comment-slash" },
@@ -136,13 +112,12 @@ const slidesData = [
     ],
     speakerNotes: `
       <p><strong>What to say:</strong></p>
-      <p>Losing confidence is rarely a single event; it is a slow accumulation of factors:</p>
-      <p>Fear of failure keeps us from taking new opportunities. Harsh, constructive-less criticism breaks our momentum.</p>
-      <p>Social media feeds lock us in comparison traps, and past negative experiences are allowed to act as predictions of future failures.</p>
+      <p>Losing confidence is rarely a single event; it is a slow accumulation of factors: fear of failure, harsh criticism, comparison traps, and past setbacks.</p>
+      <p>Briefly note: <strong>overthinking</strong> is another silent killer. When we analyze negative scenarios too long, we fall into analysis paralysis, stop taking action, and confidence drops further.</p>
     `
   },
   {
-    id: 8,
+    id: 7,
     title: "Social Media and Self-Confidence",
     subtitle: "The Illusion of Perfect Lives",
     type: "social-media",
@@ -160,7 +135,7 @@ const slidesData = [
     `
   },
   {
-    id: 9,
+    id: 8,
     title: "The Impact of Self-Talk",
     subtitle: "Our Internal Dialogue",
     type: "talk",
@@ -172,32 +147,7 @@ const slidesData = [
     `
   },
   {
-    id: 10,
-    title: "Body Language and Confidence",
-    subtitle: "The Feedback Loop of Presence",
-    type: "body-language",
-    imgLow: "https://images.unsplash.com/photo-1544717297-fa95b6ee9643?auto=format&fit=crop&q=80&w=600", // Stressed/defensive posture
-    imgHigh: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=600", // Confident smiling posture
-    pointsLow: [
-      "Slouched shoulders & head down",
-      "Avoided eye contact with audience",
-      "Soft, quiet or hesitant voice",
-      "Closed arms (Defensive posture)"
-    ],
-    pointsHigh: [
-      "Straight spine & relaxed shoulders",
-      "Direct & confident eye contact",
-      "Clear, audible & calm voice tone",
-      "Open body language & gestures"
-    ],
-    speakerNotes: `
-      <p><strong>What to say:</strong></p>
-      <p>Body language doesn't just communicate your state to others; it communicates with your own brain. Research shows that standing in a high-power pose (shoulders back, straight spine, direct eye contact) actively reduces cortisol and boosts confidence hormones.</p>
-      <p>By adjusting your posture, you can physically influence your emotional state, triggering real confidence from the outside in.</p>
-    `
-  },
-  {
-    id: 11,
+    id: 9,
     title: "Fixed Mindset vs Growth Mindset",
     subtitle: "Based on the Book 'Mindset' by Carol S. Dweck",
     type: "comparison",
@@ -227,24 +177,7 @@ const slidesData = [
     `
   },
   {
-    id: 12,
-    title: "Small Habits Build Confidence",
-    subtitle: "Inspired by James Clear's 'Atomic Habits'",
-    type: "habits",
-    insight: "Every small action casts a vote for the identity of a capable, growing person.",
-    items: [
-      { title: "Reading Daily", desc: "Expanding knowledge base and building mental agility.", icon: "fa-book-open", accent: "amber" },
-      { title: "Exercising Regularly", desc: "Releasing endorphins and improving physical self-image.", icon: "fa-person-running", accent: "emerald" },
-      { title: "Learning a New Skill", desc: "Fostering competence, which directly feeds into confidence.", icon: "fa-laptop-code", accent: "indigo" }
-    ],
-    speakerNotes: `
-      <p><strong>What to say:</strong></p>
-      <p>In <strong>Atomic Habits</strong>, James Clear explains that self-confidence is the byproduct of repeated daily wins, not a sudden morning decision.</p>
-      <p>By reading a few pages, exercising, or practicing a new skill daily, you cast small votes for the identity of a capable, growing person. These micro-wins pile up to build deep confidence.</p>
-    `
-  },
-  {
-    id: 13,
+    id: 10,
     title: "The Comfort Zone",
     subtitle: "Where Magic Happens",
     type: "comfort-zone",
@@ -257,18 +190,7 @@ const slidesData = [
     `
   },
   {
-    id: 14,
-    title: "Overthinking and Self-Doubt",
-    subtitle: "Breaking the Inaction Loop",
-    type: "cycle",
-    speakerNotes: `
-      <p><strong>What to say:</strong></p>
-      <p>Overthinking is a silent confidence killer. Spending too much time analyzing negative scenarios leads to 'analysis paralysis'.</p>
-      <p>This triggers inaction. A lack of action deprives us of the successes that build confidence, keeping us trapped in a self-sabotaging loop. Taking immediate, imperfect action is the only way out.</p>
-    `
-  },
-  {
-    id: 15,
+    id: 11,
     title: "Failure and Success",
     subtitle: "The Iceberg of Achievement",
     type: "iceberg",
@@ -280,7 +202,7 @@ const slidesData = [
     `
   },
   {
-    id: 16,
+    id: 12,
     title: "Real-Life Examples of Persistence",
     subtitle: "Stories of Unwavering Self-Belief",
     type: "stories",
@@ -319,7 +241,7 @@ const slidesData = [
     `
   },
   {
-    id: 17,
+    id: 13,
     title: "Confidence in Academic Life",
     subtitle: "Real-World Student Scenarios",
     type: "academic-life",
@@ -337,7 +259,7 @@ const slidesData = [
     `
   },
   {
-    id: 18,
+    id: 14,
     title: "Practical Strategies to Build Confidence",
     subtitle: "Actionable Steps for Personal Growth",
     type: "strategies",
@@ -356,30 +278,9 @@ const slidesData = [
     `
   },
   {
-    id: 19,
-    title: "Key Lessons",
-    subtitle: "Summary of Insights",
-    type: "lessons",
-    items: [
-      { text: "Confidence is developed, not inherited.", icon: "fa-seedling", accent: "amber" },
-      { text: "Failure is a learning opportunity, not a dead end.", icon: "fa-arrows-rotate", accent: "crimson" },
-      { text: "Small habits create lasting identity changes.", icon: "fa-layer-group", accent: "emerald" },
-      { text: "Growth begins outside the comfort zone.", icon: "fa-mountain-sun", accent: "violet" },
-      { text: "Positive self-talk supports psychological strength.", icon: "fa-brain", accent: "indigo" }
-    ],
-    speakerNotes: `
-      <p><strong>What to say:</strong></p>
-      <p>Let's summarize the five key insights we covered today:</p>
-      <p>1. Confidence is a developed skill, not a genetic trait.</p>
-      <p>2. Failure is feedback, and our greatest teacher.</p>
-      <p>3. Small, daily habits shape our lasting identity.</p>
-      <p>4. Growth only begins when we leave our comfort zone.</p>
-      <p>5. The way we speak to ourselves defines our boundaries.</p>
-    `
-  },
-  {
-    id: 20,
+    id: 15,
     title: "Conclusion",
+    subtitle: "Thank You — Any Questions?",
     type: "conclusion",
     lead: "Self-confidence is not something we are born with;",
     emphasis: "it is something we build through experience, action, and continuous growth.",
@@ -389,21 +290,12 @@ const slidesData = [
       { label: "Continuous Growth", icon: "fa-seedling", accent: "emerald" }
     ],
     cta: "The choice to start building confidence starts with you today.",
+    thankYou: "Thank you for your time and active listening.",
+    questions: "Any questions?",
     speakerNotes: `
       <p><strong>What to say:</strong></p>
       <p>In conclusion, self-confidence is not something we are born with. It is something we build through experience, action, and continuous growth.</p>
-      <p>Every person in this room has the ability to take that first step. The choice to start building confidence starts with you today.</p>
-    `
-  },
-  {
-    id: 21,
-    title: "Thank You",
-    subtitle: "Any Questions?",
-    type: "thank-you",
-    speakerNotes: `
-      <p><strong>What to say:</strong></p>
-      <p>Thank you very much for your time and active listening.</p>
-      <p>I would now like to open the floor to any questions, thoughts, or personal stories you would like to share about self-confidence.</p>
+      <p>Every person in this room has the ability to take that first step. Thank you for your time. I would now like to open the floor to any questions or thoughts you would like to share.</p>
     `
   }
 ];
@@ -1006,6 +898,7 @@ function buildAndRender(slide, index) {
       htmlContent = `
         <div class="slide-layout-wrapper conclusion-slide">
           <h2 class="slide-title">${slide.title}</h2>
+          ${slide.subtitle ? `<p class="slide-subtitle conclusion-subtitle">${slide.subtitle}</p>` : ''}
           <div class="conclusion-statement">
             <i class="fa-solid fa-quote-left conclusion-quote-icon"></i>
             <p class="conclusion-lead">${slide.lead}</p>
@@ -1018,6 +911,13 @@ function buildAndRender(slide, index) {
             <i class="fa-solid fa-arrow-right"></i>
             ${slide.cta}
           </p>
+          <div class="conclusion-footer">
+            <p class="conclusion-thanks">${slide.thankYou || ''}</p>
+            <div class="conclusion-questions-card">
+              <i class="fa-solid fa-circle-question"></i>
+              <span>${slide.questions || 'Any questions?'}</span>
+            </div>
+          </div>
         </div>
       `;
       break;
@@ -1304,7 +1204,7 @@ function exportToPowerpoint() {
     // Presentation configurations
     pptx.title = "The Psychology of Self-Confidence";
     pptx.subject = "Psychology and Success Presentation";
-    pptx.author = "Antigravity AI Designer";
+    pptx.author = "Jacqueline Saad Mikhail";
     pptx.defineLayout({ name: 'CUSTOM_WIDESCREEN', width: 13.33, height: 7.5 });
     pptx.layout = 'CUSTOM_WIDESCREEN';
     
@@ -1642,13 +1542,31 @@ function exportToPowerpoint() {
         case "conclusion":
           const conclusionText = `${slide.lead} ${slide.emphasis}`;
           pptxSlide.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
-            x: 1.0, y: 2.0, w: 11.3, h: 3.8,
+            x: 1.0, y: 1.8, w: 11.3, h: 3.2,
             fill: cardFillHex, line: { color: accentSecondaryHex, width: 1 }
           });
           pptxSlide.addText(conclusionText, {
-            x: 1.5, y: 2.5, w: 10.3, h: 2.8,
-            fontSize: 20, color: textWhiteHex, fontFace: "Arial", align: "center", lineSpacing: 30
+            x: 1.5, y: 2.2, w: 10.3, h: 2.4,
+            fontSize: 18, color: textWhiteHex, fontFace: "Arial", align: "center", lineSpacing: 28
           });
+          if (slide.subtitle) {
+            pptxSlide.addText(slide.subtitle, {
+              x: 1.0, y: 5.2, w: 11.3, h: 0.4,
+              fontSize: 14, bold: true, color: accentGoldHex, fontFace: "Arial", align: "center"
+            });
+          }
+          if (slide.thankYou) {
+            pptxSlide.addText(slide.thankYou, {
+              x: 1.0, y: 5.7, w: 11.3, h: 0.4,
+              fontSize: 12, color: textSecondaryHex, fontFace: "Arial", align: "center"
+            });
+          }
+          if (slide.questions) {
+            pptxSlide.addText(slide.questions, {
+              x: 1.0, y: 6.2, w: 11.3, h: 0.5,
+              fontSize: 20, bold: true, color: accentSecondaryHex, fontFace: "Arial", align: "center"
+            });
+          }
           break;
           
         case "thank-you":
