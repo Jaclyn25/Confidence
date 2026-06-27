@@ -92,9 +92,9 @@ body {
   align-items: center;
   justify-content: center;
   width: 100%;
-  max-width: 1100px;
+  min-height: 0;
   margin: 0 auto;
-  padding: 1rem 0;
+  padding: 0.5rem;
 }
 
 /* Slide Progress indicator bar */
@@ -121,6 +121,10 @@ body {
    ========================================================================= */
 .slide-layout-wrapper {
   width: 100%;
+  max-width: min(1100px, calc((100vh - 140px) * 16 / 9));
+  height: 100%;
+  max-height: calc(100vw * 9 / 16);
+  aspect-ratio: 16 / 9;
   background: var(--bg-glass-card);
   backdrop-filter: blur(25px) saturate(130%);
   -webkit-backdrop-filter: blur(25px) saturate(130%);
@@ -130,7 +134,27 @@ body {
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
   animation: slideEnter 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   position: relative;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Custom Webkit Scrollbar for internal slide scrolling */
+.slide-layout-wrapper::-webkit-scrollbar {
+  width: 8px;
+}
+.slide-layout-wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+.slide-layout-wrapper::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+.slide-layout-wrapper::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border: 2px solid transparent;
+  background-clip: padding-box;
 }
 
 /* Slide Exit Animation Triggered via JS */
