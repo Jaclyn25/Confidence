@@ -231,10 +231,11 @@ const slidesData = [
     title: "Small Habits Build Confidence",
     subtitle: "Inspired by James Clear's 'Atomic Habits'",
     type: "habits",
+    insight: "Every small action casts a vote for the identity of a capable, growing person.",
     items: [
-      { title: "Reading Daily", desc: "Expanding knowledge base and building mental agility.", icon: "fa-book-open" },
-      { title: "Exercising Regularly", desc: "Releasing endorphins and improving physical self-image.", icon: "fa-person-running" },
-      { title: "Learning a New Skill", desc: "Fostering competence, which directly feeds into confidence.", icon: "fa-laptop-code" }
+      { title: "Reading Daily", desc: "Expanding knowledge base and building mental agility.", icon: "fa-book-open", accent: "amber" },
+      { title: "Exercising Regularly", desc: "Releasing endorphins and improving physical self-image.", icon: "fa-person-running", accent: "emerald" },
+      { title: "Learning a New Skill", desc: "Fostering competence, which directly feeds into confidence.", icon: "fa-laptop-code", accent: "indigo" }
     ],
     speakerNotes: `
       <p><strong>What to say:</strong></p>
@@ -283,9 +284,30 @@ const slidesData = [
     title: "Real-Life Examples of Persistence",
     subtitle: "Stories of Unwavering Self-Belief",
     type: "stories",
+    insight: "Persistence turns setbacks into stepping stones.",
     examples: [
-      { author: "J. K. Rowling", role: "Author of Harry Potter", quote: "Had her manuscript rejected by 12 publishers while living in poverty. Her unwavering belief in her story kept her going until it became a global phenomenon.", initials: "JR", image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&q=80&w=600" }, // Writer's notebook
-      { author: "Thomas Edison", role: "Inventor of the Light Bulb", quote: "Failed thousands of times before creating the light bulb. He famously stated: 'I have not failed. I've just found 10,000 ways that won't work.'", initials: "TE", image: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&q=80&w=600" } // Workspace/bulbs
+      {
+        author: "J. K. Rowling",
+        role: "Author of Harry Potter",
+        quote: "Had her manuscript rejected by 12 publishers while living in poverty. Her unwavering belief in her story kept her going until it became a global phenomenon.",
+        stat: "12",
+        statLabel: "publisher rejections",
+        initials: "JR",
+        image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&q=80&w=600",
+        accent: "violet",
+        icon: "fa-feather-pointed"
+      },
+      {
+        author: "Thomas Edison",
+        role: "Inventor of the Light Bulb",
+        quote: "Failed thousands of times before creating the light bulb. He famously stated: 'I have not failed. I've just found 10,000 ways that won't work.'",
+        stat: "10,000",
+        statLabel: "failed attempts",
+        initials: "TE",
+        image: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&q=80&w=600",
+        accent: "amber",
+        icon: "fa-lightbulb"
+      }
     ],
     speakerNotes: `
       <p><strong>What to say:</strong></p>
@@ -339,11 +361,11 @@ const slidesData = [
     subtitle: "Summary of Insights",
     type: "lessons",
     items: [
-      "Confidence is developed, not inherited.",
-      "Failure is a learning opportunity, not a dead end.",
-      "Small habits create lasting identity changes.",
-      "Growth begins outside the comfort zone.",
-      "Positive self-talk supports psychological strength."
+      { text: "Confidence is developed, not inherited.", icon: "fa-seedling", accent: "amber" },
+      { text: "Failure is a learning opportunity, not a dead end.", icon: "fa-arrows-rotate", accent: "crimson" },
+      { text: "Small habits create lasting identity changes.", icon: "fa-layer-group", accent: "emerald" },
+      { text: "Growth begins outside the comfort zone.", icon: "fa-mountain-sun", accent: "violet" },
+      { text: "Positive self-talk supports psychological strength.", icon: "fa-brain", accent: "indigo" }
     ],
     speakerNotes: `
       <p><strong>What to say:</strong></p>
@@ -359,11 +381,18 @@ const slidesData = [
     id: 20,
     title: "Conclusion",
     type: "conclusion",
-    text: "Self-confidence is not a gift that only a few people possess. It is a skill that can be developed through effort, learning, and experience. Every person has the ability to build confidence and improve their personality over time.",
+    lead: "Self-confidence is not something we are born with;",
+    emphasis: "it is something we build through experience, action, and continuous growth.",
+    pillars: [
+      { label: "Experience", icon: "fa-road", accent: "indigo" },
+      { label: "Action", icon: "fa-bolt", accent: "amber" },
+      { label: "Continuous Growth", icon: "fa-seedling", accent: "emerald" }
+    ],
+    cta: "The choice to start building confidence starts with you today.",
     speakerNotes: `
       <p><strong>What to say:</strong></p>
-      <p>In conclusion, self-confidence is not a gift reserved for a selected few. It is a journey built step-by-step through learning, effort, and experience.</p>
-      <p>Every person in this room possesses the ability to build confidence and develop their character over time. The choice to take that first step starts with you today.</p>
+      <p>In conclusion, self-confidence is not something we are born with. It is something we build through experience, action, and continuous growth.</p>
+      <p>Every person in this room has the ability to take that first step. The choice to start building confidence starts with you today.</p>
     `
   },
   {
@@ -712,21 +741,44 @@ function buildAndRender(slide, index) {
       break;
 
     case "habits":
-      let habitHtml = slide.items.map((h, i) => `
-        <div class="habit-step">
-          <div class="habit-icon"><i class="fa-solid ${h.icon}"></i></div>
-          <div class="habit-title">${h.title}</div>
-          <div class="habit-desc">${h.desc}</div>
-        </div>
-      `).join('');
-      
+      const habitAccents = {
+        amber: { color: "var(--amber-accent)", glow: "var(--amber-glow)", bg: "rgba(245, 158, 11, 0.1)", border: "rgba(245, 158, 11, 0.28)" },
+        emerald: { color: "var(--emerald-accent)", glow: "var(--emerald-glow)", bg: "rgba(16, 185, 129, 0.1)", border: "rgba(16, 185, 129, 0.28)" },
+        indigo: { color: "var(--indigo-accent)", glow: "var(--indigo-glow)", bg: "rgba(99, 102, 241, 0.1)", border: "rgba(99, 102, 241, 0.28)" }
+      };
+
+      let habitFlowHtml = slide.items.map((h, i) => {
+        const accent = habitAccents[h.accent] || habitAccents.indigo;
+        const connector = i < slide.items.length - 1
+          ? `<div class="habit-connector" aria-hidden="true"><i class="fa-solid fa-arrow-right-long"></i></div>`
+          : "";
+
+        return `
+          <div class="habit-card" style="--habit-color: ${accent.color}; --habit-glow: ${accent.glow}; --habit-bg: ${accent.bg}; --habit-border: ${accent.border}; --habit-delay: ${0.1 + i * 0.08}s">
+            <span class="habit-step-num">${String(i + 1).padStart(2, "0")}</span>
+            <div class="habit-icon"><i class="fa-solid ${h.icon}"></i></div>
+            <h3 class="habit-title">${h.title}</h3>
+            <p class="habit-desc">${h.desc}</p>
+          </div>
+          ${connector}
+        `;
+      }).join('');
+
       htmlContent = `
-        <div class="slide-layout-wrapper">
+        <div class="slide-layout-wrapper habits-slide">
           <h2 class="slide-title">${slide.title}</h2>
           <p class="slide-subtitle">${slide.subtitle}</p>
-          <div class="habit-steps">
-            ${habitHtml}
+          <div class="habits-insight">
+            <i class="fa-solid fa-seedling"></i>
+            <p>${slide.insight}</p>
           </div>
+          <div class="habits-flow">
+            ${habitFlowHtml}
+          </div>
+          <p class="habits-footnote">
+            <i class="fa-solid fa-layer-group"></i>
+            Micro-wins pile up to build lasting confidence.
+          </p>
         </div>
       `;
       break;
@@ -785,27 +837,48 @@ function buildAndRender(slide, index) {
       break;
 
     case "stories":
-      let storiesHtml = slide.examples.map(ex => `
-        <div class="story-card-with-img">
-          <div class="story-card-image" style="background-image: url('${ex.image}')"></div>
-          <div class="story-card-content">
-            <div class="story-header" style="margin-bottom: 0.8rem;">
-              <div class="story-avatar-placeholder">${ex.initials}</div>
-              <div class="story-author-details">
-                <h4>${ex.author}</h4>
-                <span>${ex.role}</span>
+      const storyAccents = {
+        violet: { color: "var(--violet-accent)", glow: "var(--violet-glow)", bg: "rgba(139, 92, 246, 0.12)", border: "rgba(139, 92, 246, 0.28)" },
+        amber: { color: "var(--amber-accent)", glow: "var(--amber-glow)", bg: "rgba(245, 158, 11, 0.12)", border: "rgba(245, 158, 11, 0.28)" }
+      };
+
+      let storiesHtml = slide.examples.map((ex, i) => {
+        const accent = storyAccents[ex.accent] || storyAccents.violet;
+        return `
+          <article class="story-card" style="--story-color: ${accent.color}; --story-glow: ${accent.glow}; --story-bg: ${accent.bg}; --story-border: ${accent.border}; --story-delay: ${0.1 + i * 0.1}s">
+            <div class="story-card-hero" style="background-image: linear-gradient(rgba(11, 15, 25, 0.15), rgba(11, 15, 25, 0.75)), url('${ex.image}')">
+              <div class="story-stat-badge">
+                <span class="story-stat-value">${ex.stat}</span>
+                <span class="story-stat-label">${ex.statLabel}</span>
               </div>
+              <div class="story-hero-icon"><i class="fa-solid ${ex.icon}"></i></div>
             </div>
-            <p class="story-body" style="font-size: 0.95rem;">"${ex.quote}"</p>
-          </div>
-        </div>
-      `).join('');
-      
+            <div class="story-card-body">
+              <div class="story-author-row">
+                <div class="story-avatar">${ex.initials}</div>
+                <div class="story-author-details">
+                  <h4>${ex.author}</h4>
+                  <span>${ex.role}</span>
+                </div>
+              </div>
+              <blockquote class="story-quote">
+                <i class="fa-solid fa-quote-left story-quote-icon"></i>
+                <p>${ex.quote}</p>
+              </blockquote>
+            </div>
+          </article>
+        `;
+      }).join('');
+
       htmlContent = `
-        <div class="slide-layout-wrapper">
+        <div class="slide-layout-wrapper stories-slide">
           <h2 class="slide-title">${slide.title}</h2>
           <p class="slide-subtitle">${slide.subtitle}</p>
-          <div class="stories-container">
+          <div class="stories-insight">
+            <i class="fa-solid fa-mountain-sun"></i>
+            <p>${slide.insight}</p>
+          </div>
+          <div class="stories-grid">
             ${storiesHtml}
           </div>
         </div>
@@ -864,18 +937,38 @@ function buildAndRender(slide, index) {
       break;
 
     case "lessons":
-      let lessonsHtml = slide.items.map((lesson, i) => `
-        <div class="lesson-card">
-          <div class="lesson-num">0${i+1}</div>
-          <div class="lesson-desc">${lesson}</div>
-        </div>
-      `).join('');
-      
+      const lessonAccents = {
+        amber: { color: "var(--amber-accent)", glow: "var(--amber-glow)", bg: "rgba(245, 158, 11, 0.1)", border: "rgba(245, 158, 11, 0.28)" },
+        crimson: { color: "var(--crimson-accent)", glow: "var(--crimson-glow)", bg: "rgba(239, 68, 68, 0.1)", border: "rgba(239, 68, 68, 0.28)" },
+        emerald: { color: "var(--emerald-accent)", glow: "var(--emerald-glow)", bg: "rgba(16, 185, 129, 0.1)", border: "rgba(16, 185, 129, 0.28)" },
+        violet: { color: "var(--violet-accent)", glow: "var(--violet-glow)", bg: "rgba(139, 92, 246, 0.1)", border: "rgba(139, 92, 246, 0.28)" },
+        indigo: { color: "var(--indigo-accent)", glow: "var(--indigo-glow)", bg: "rgba(99, 102, 241, 0.1)", border: "rgba(99, 102, 241, 0.28)" }
+      };
+
+      let lessonsHtml = slide.items.map((lesson, i) => {
+        const accent = lessonAccents[lesson.accent] || lessonAccents.indigo;
+        return `
+          <div class="lesson-row" style="--lesson-color: ${accent.color}; --lesson-glow: ${accent.glow}; --lesson-bg: ${accent.bg}; --lesson-border: ${accent.border}; --lesson-delay: ${0.08 + i * 0.07}s">
+            <div class="lesson-marker">
+              <span class="lesson-index">${String(i + 1).padStart(2, "0")}</span>
+            </div>
+            <div class="lesson-body">
+              <div class="lesson-icon"><i class="fa-solid ${lesson.icon}"></i></div>
+              <p class="lesson-text">${lesson.text}</p>
+            </div>
+          </div>
+        `;
+      }).join('');
+
       htmlContent = `
-        <div class="slide-layout-wrapper">
+        <div class="slide-layout-wrapper lessons-slide">
           <h2 class="slide-title">${slide.title}</h2>
           <p class="slide-subtitle">${slide.subtitle}</p>
-          <div class="lessons-list">
+          <div class="lessons-count-badge">
+            <i class="fa-solid fa-lightbulb"></i>
+            <span>${slide.items.length} insights to remember</span>
+          </div>
+          <div class="lessons-timeline">
             ${lessonsHtml}
           </div>
         </div>
@@ -883,12 +976,37 @@ function buildAndRender(slide, index) {
       break;
 
     case "conclusion":
-      htmlContent = `
-        <div class="slide-layout-wrapper">
-          <h2 class="slide-title">${slide.title}</h2>
-          <div class="conclusion-box">
-            <p class="conclusion-text">"${slide.text}"</p>
+      const conclusionAccents = {
+        indigo: { color: "var(--indigo-accent)", bg: "rgba(99, 102, 241, 0.1)", border: "rgba(99, 102, 241, 0.28)" },
+        amber: { color: "var(--amber-accent)", bg: "rgba(245, 158, 11, 0.1)", border: "rgba(245, 158, 11, 0.28)" },
+        emerald: { color: "var(--emerald-accent)", bg: "rgba(16, 185, 129, 0.1)", border: "rgba(16, 185, 129, 0.28)" }
+      };
+
+      const pillarsHtml = slide.pillars.map((pillar, i) => {
+        const accent = conclusionAccents[pillar.accent] || conclusionAccents.indigo;
+        return `
+          <div class="conclusion-pillar" style="--pillar-color: ${accent.color}; --pillar-bg: ${accent.bg}; --pillar-border: ${accent.border}; --pillar-delay: ${0.35 + i * 0.08}s">
+            <div class="conclusion-pillar-icon"><i class="fa-solid ${pillar.icon}"></i></div>
+            <span>${pillar.label}</span>
           </div>
+        `;
+      }).join('');
+
+      htmlContent = `
+        <div class="slide-layout-wrapper conclusion-slide">
+          <h2 class="slide-title">${slide.title}</h2>
+          <div class="conclusion-statement">
+            <i class="fa-solid fa-quote-left conclusion-quote-icon"></i>
+            <p class="conclusion-lead">${slide.lead}</p>
+            <p class="conclusion-emphasis">${slide.emphasis}</p>
+          </div>
+          <div class="conclusion-pillars">
+            ${pillarsHtml}
+          </div>
+          <p class="conclusion-cta">
+            <i class="fa-solid fa-arrow-right"></i>
+            ${slide.cta}
+          </p>
         </div>
       `;
       break;
@@ -1502,7 +1620,7 @@ function exportToPowerpoint() {
           break;
           
         case "lessons":
-          let lessonsList = slide.items.map((les, idx) => `${idx+1}. ${les}`).join("\n\n");
+          let lessonsList = slide.items.map((les, idx) => `${idx+1}. ${les.text || les}`).join("\n\n");
           pptxSlide.addText(lessonsList, {
             x: 0.8, y: 1.8, w: 11.7, h: 4.4,
             fontSize: 15, color: textWhiteHex, fontFace: "Arial", lineSpacing: 22
@@ -1510,11 +1628,12 @@ function exportToPowerpoint() {
           break;
           
         case "conclusion":
+          const conclusionText = `${slide.lead} ${slide.emphasis}`;
           pptxSlide.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
             x: 1.0, y: 2.0, w: 11.3, h: 3.8,
             fill: "111827", line: { color: "8B5CF6", width: 1 }
           });
-          pptxSlide.addText(slide.text, {
+          pptxSlide.addText(conclusionText, {
             x: 1.5, y: 2.5, w: 10.3, h: 2.8,
             fontSize: 20, color: textWhiteHex, fontFace: "Arial", align: "center", lineSpacing: 30
           });
