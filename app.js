@@ -301,7 +301,7 @@ const slidesData = [
     title: "Confidence in Academic Life",
     subtitle: "Real-World Student Scenarios",
     type: "academic-life",
-    image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=800", // University hall
+    image: "https://images.pexels.com/photos/1205651/pexels-photo-1205651.jpeg?auto=compress&cs=tinysrgb&w=800", // University lecture hall
     items: [
       { title: "Classroom Engagement", desc: "Asking questions and contributing to class discussions helps desensitize the fear of speaking.", icon: "fa-comments" },
       { title: "Project Presentations", desc: "Presenting in front of peers builds essential communication skills and academic authority.", icon: "fa-display" },
@@ -831,7 +831,7 @@ function buildAndRender(slide, index) {
               ${acadCards}
             </div>
           </div>
-          <div class="split-image-panel" style="background-image: url('${slide.image}')"></div>
+          <div class="split-image-panel" style="min-height: 500px; background-image: url('${slide.image}'); background-size: cover; background-position: center; border-radius: 0 20px 20px 0;"></div>
         </div>
       `;
       break;
