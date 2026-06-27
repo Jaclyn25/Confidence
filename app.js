@@ -409,6 +409,42 @@ const slidesData = [
 ];
 
 // =========================================================================
+// THEME TOKENS (Warm Confidence)
+// =========================================================================
+const THEME_OVERLAY = "rgba(22, 12, 26, 0.9)";
+const THEME_OVERLAY_MID = "rgba(22, 12, 26, 0.92)";
+const THEME_OVERLAY_LIGHT = "rgba(22, 12, 26, 0.12)";
+const THEME_OVERLAY_HEAVY = "rgba(22, 12, 26, 0.78)";
+
+const ACCENT_TOKENS = {
+  indigo: { color: "var(--indigo-accent)", glow: "var(--indigo-glow)", bg: "var(--indigo-bg)", border: "var(--indigo-border)" },
+  violet: { color: "var(--violet-accent)", glow: "var(--violet-glow)", bg: "var(--violet-bg)", border: "var(--violet-border)" },
+  amber: { color: "var(--amber-accent)", glow: "var(--amber-glow)", bg: "var(--amber-bg)", border: "var(--amber-border)" },
+  emerald: { color: "var(--emerald-accent)", glow: "var(--emerald-glow)", bg: "var(--emerald-bg)", border: "var(--emerald-border)" },
+  crimson: { color: "var(--crimson-accent)", glow: "var(--crimson-glow)", bg: "var(--crimson-bg)", border: "var(--crimson-border)" }
+};
+
+const ZONE_GLOW = {
+  comfort: "0 0 28px hsla(300, 40%, 72%, 0.7)",
+  fear: "0 0 28px hsla(350, 58%, 58%, 0.7)",
+  learning: "0 0 28px hsla(32, 82%, 58%, 0.7)",
+  growth: "0 0 28px hsla(162, 38%, 48%, 0.7)"
+};
+
+const PPTX_THEME = {
+  bgDark: "12091A",
+  cardFill: "1E1228",
+  cardBorder: "332040",
+  primary: "E07095",
+  secondary: "B07FD4",
+  gold: "E0A84A",
+  success: "4A9E7A",
+  danger: "E05A72",
+  textWhite: "FAF6F2",
+  textSecondary: "C4B4C0"
+};
+
+// =========================================================================
 // PRESENTATION ENGINE STATE
 // =========================================================================
 let currentSlideIndex = 0;
@@ -579,7 +615,7 @@ function buildAndRender(slide, index) {
           <h2 class="slide-title">${slide.title}</h2>
           <p class="slide-subtitle">${slide.subtitle}</p>
           <div class="science-pathway">
-            <div class="science-diagram-with-bg" style="background-image: linear-gradient(rgba(11,15,25,0.85), rgba(11,15,25,0.85)), url('${slide.image}')">
+            <div class="science-diagram-with-bg" style="background-image: linear-gradient(${THEME_OVERLAY}, ${THEME_OVERLAY}), url('${slide.image}')">
               <div class="science-node"><i class="fa-solid fa-bolt"></i> <span>Take Action</span></div>
               <div class="science-node"><i class="fa-solid fa-award"></i> <span>Achieve Small Win</span></div>
               <div class="science-node"><i class="fa-solid fa-brain"></i> <span>Neural Rewire Loop</span></div>
@@ -727,7 +763,7 @@ function buildAndRender(slide, index) {
               </div>
             </div>
             <!-- Info Display Card -->
-            <div class="cz-info-card-split" id="cz-info-card-display" style="background-image: linear-gradient(rgba(13,18,30,0.9), rgba(13,18,30,0.9)), url('${slide.image}')">
+            <div class="cz-info-card-split" id="cz-info-card-display" style="background-image: linear-gradient(${THEME_OVERLAY_MID}, ${THEME_OVERLAY_MID}), url('${slide.image}')">
               <h3 id="cz-display-title">Comfort Zone</h3>
               <ul id="cz-display-points">
                 <li>Here, you feel safe, secure, and fully in control.</li>
@@ -741,14 +777,8 @@ function buildAndRender(slide, index) {
       break;
 
     case "habits":
-      const habitAccents = {
-        amber: { color: "var(--amber-accent)", glow: "var(--amber-glow)", bg: "rgba(245, 158, 11, 0.1)", border: "rgba(245, 158, 11, 0.28)" },
-        emerald: { color: "var(--emerald-accent)", glow: "var(--emerald-glow)", bg: "rgba(16, 185, 129, 0.1)", border: "rgba(16, 185, 129, 0.28)" },
-        indigo: { color: "var(--indigo-accent)", glow: "var(--indigo-glow)", bg: "rgba(99, 102, 241, 0.1)", border: "rgba(99, 102, 241, 0.28)" }
-      };
-
       let habitFlowHtml = slide.items.map((h, i) => {
-        const accent = habitAccents[h.accent] || habitAccents.indigo;
+        const accent = ACCENT_TOKENS[h.accent] || ACCENT_TOKENS.indigo;
         const connector = i < slide.items.length - 1
           ? `<div class="habit-connector" aria-hidden="true"><i class="fa-solid fa-arrow-right-long"></i></div>`
           : "";
@@ -790,17 +820,17 @@ function buildAndRender(slide, index) {
           <p class="slide-subtitle">${slide.subtitle}</p>
           <div class="cycle-wrapper">
             <div class="cycle-nodes">
-              <div class="cycle-node" style="border-color: var(--crimson-accent); color: #fca5a5;">Overthinking</div>
+              <div class="cycle-node" style="border-color: var(--crimson-accent); color: var(--crimson-soft);">Overthinking</div>
               <div class="cycle-arrow"><i class="fa-solid fa-arrow-right-long"></i></div>
-              <div class="cycle-node" style="border-color: var(--amber-accent); color: #fde047;">Fear & Doubt</div>
+              <div class="cycle-node" style="border-color: var(--amber-accent); color: var(--amber-soft);">Fear & Doubt</div>
               <div class="cycle-arrow"><i class="fa-solid fa-arrow-right-long"></i></div>
-              <div class="cycle-node" style="border-color: var(--indigo-accent); color: #a5b4fc;">Inaction</div>
+              <div class="cycle-node" style="border-color: var(--indigo-accent); color: var(--indigo-soft);">Inaction</div>
             </div>
             <div style="height: 35px; border-left: 2px dashed var(--text-muted); margin: 0.8rem 0;"></div>
             <div class="cycle-nodes" style="flex-direction: row-reverse;">
-              <div class="cycle-node" style="border-color: var(--violet-accent); color: #ddd6fe;">Reduced Confidence</div>
+              <div class="cycle-node" style="border-color: var(--violet-accent); color: var(--violet-soft);">Reduced Confidence</div>
               <div class="cycle-arrow"><i class="fa-solid fa-arrow-left-long"></i></div>
-              <div class="cycle-node" style="border-color: var(--crimson-accent); color: #fca5a5;">Fewer Experiences</div>
+              <div class="cycle-node" style="border-color: var(--crimson-accent); color: var(--crimson-soft);">Fewer Experiences</div>
             </div>
             <div style="margin-top: 2rem; text-align: center; color: var(--text-secondary); font-size: 0.95rem;">
               <i class="fa-solid fa-arrows-spin spinning-icon" style="color: var(--amber-accent);"></i> Action is the only way to break this self-reinforcing circle.
@@ -816,10 +846,10 @@ function buildAndRender(slide, index) {
           <h2 class="slide-title">${slide.title}</h2>
           <p class="slide-subtitle">${slide.subtitle}</p>
           <div class="iceberg-wrapper">
-            <div class="iceberg-visual" style="background-image: linear-gradient(rgba(11,15,25,0.7), rgba(11,15,25,0.85)), url('${slide.image}')">
+            <div class="iceberg-visual" style="background-image: linear-gradient(${THEME_OVERLAY_HEAVY}, ${THEME_OVERLAY}), url('${slide.image}')">
               <div class="waterline"></div>
               <div class="iceberg-part iceberg-visible" style="z-index: 5;">
-                <h3 style="color: #60a5fa; text-shadow: 0 0 10px rgba(59, 130, 246, 0.5)">SUCCESS</h3>
+                <h3 style="color: var(--sky-soft); text-shadow: 0 0 10px var(--sky-glow)">SUCCESS</h3>
                 <p style="font-size:0.8rem; color:var(--text-secondary)">What people see & admire</p>
               </div>
               <div class="iceberg-part iceberg-hidden" style="z-index: 5;">
@@ -837,16 +867,11 @@ function buildAndRender(slide, index) {
       break;
 
     case "stories":
-      const storyAccents = {
-        violet: { color: "var(--violet-accent)", glow: "var(--violet-glow)", bg: "rgba(139, 92, 246, 0.12)", border: "rgba(139, 92, 246, 0.28)" },
-        amber: { color: "var(--amber-accent)", glow: "var(--amber-glow)", bg: "rgba(245, 158, 11, 0.12)", border: "rgba(245, 158, 11, 0.28)" }
-      };
-
       let storiesHtml = slide.examples.map((ex, i) => {
-        const accent = storyAccents[ex.accent] || storyAccents.violet;
+        const accent = ACCENT_TOKENS[ex.accent] || ACCENT_TOKENS.violet;
         return `
           <article class="story-card" style="--story-color: ${accent.color}; --story-glow: ${accent.glow}; --story-bg: ${accent.bg}; --story-border: ${accent.border}; --story-delay: ${0.1 + i * 0.1}s">
-            <div class="story-card-hero" style="background-image: linear-gradient(rgba(11, 15, 25, 0.15), rgba(11, 15, 25, 0.75)), url('${ex.image}')">
+            <div class="story-card-hero" style="background-image: linear-gradient(${THEME_OVERLAY_LIGHT}, ${THEME_OVERLAY_HEAVY}), url('${ex.image}')">
               <div class="story-stat-badge">
                 <span class="story-stat-value">${ex.stat}</span>
                 <span class="story-stat-label">${ex.statLabel}</span>
@@ -927,7 +952,7 @@ function buildAndRender(slide, index) {
             <div class="strategies-list">
               ${listItems}
             </div>
-            <div class="strategy-details-panel-img" id="strategy-details-panel" style="background-image: linear-gradient(rgba(13,18,30,0.9), rgba(13,18,30,0.9)), url('${slide.image}')">
+            <div class="strategy-details-panel-img" id="strategy-details-panel" style="background-image: linear-gradient(${THEME_OVERLAY_MID}, ${THEME_OVERLAY_MID}), url('${slide.image}')">
               <h3 class="strategy-details-title">${activeDetails.title}</h3>
               <p class="strategy-details-desc">${activeDetails.desc}</p>
             </div>
@@ -937,16 +962,8 @@ function buildAndRender(slide, index) {
       break;
 
     case "lessons":
-      const lessonAccents = {
-        amber: { color: "var(--amber-accent)", glow: "var(--amber-glow)", bg: "rgba(245, 158, 11, 0.1)", border: "rgba(245, 158, 11, 0.28)" },
-        crimson: { color: "var(--crimson-accent)", glow: "var(--crimson-glow)", bg: "rgba(239, 68, 68, 0.1)", border: "rgba(239, 68, 68, 0.28)" },
-        emerald: { color: "var(--emerald-accent)", glow: "var(--emerald-glow)", bg: "rgba(16, 185, 129, 0.1)", border: "rgba(16, 185, 129, 0.28)" },
-        violet: { color: "var(--violet-accent)", glow: "var(--violet-glow)", bg: "rgba(139, 92, 246, 0.1)", border: "rgba(139, 92, 246, 0.28)" },
-        indigo: { color: "var(--indigo-accent)", glow: "var(--indigo-glow)", bg: "rgba(99, 102, 241, 0.1)", border: "rgba(99, 102, 241, 0.28)" }
-      };
-
       let lessonsHtml = slide.items.map((lesson, i) => {
-        const accent = lessonAccents[lesson.accent] || lessonAccents.indigo;
+        const accent = ACCENT_TOKENS[lesson.accent] || ACCENT_TOKENS.indigo;
         return `
           <div class="lesson-row" style="--lesson-color: ${accent.color}; --lesson-glow: ${accent.glow}; --lesson-bg: ${accent.bg}; --lesson-border: ${accent.border}; --lesson-delay: ${0.08 + i * 0.07}s">
             <div class="lesson-marker">
@@ -976,14 +993,8 @@ function buildAndRender(slide, index) {
       break;
 
     case "conclusion":
-      const conclusionAccents = {
-        indigo: { color: "var(--indigo-accent)", bg: "rgba(99, 102, 241, 0.1)", border: "rgba(99, 102, 241, 0.28)" },
-        amber: { color: "var(--amber-accent)", bg: "rgba(245, 158, 11, 0.1)", border: "rgba(245, 158, 11, 0.28)" },
-        emerald: { color: "var(--emerald-accent)", bg: "rgba(16, 185, 129, 0.1)", border: "rgba(16, 185, 129, 0.28)" }
-      };
-
       const pillarsHtml = slide.pillars.map((pillar, i) => {
-        const accent = conclusionAccents[pillar.accent] || conclusionAccents.indigo;
+        const accent = ACCENT_TOKENS[pillar.accent] || ACCENT_TOKENS.indigo;
         return `
           <div class="conclusion-pillar" style="--pillar-color: ${accent.color}; --pillar-bg: ${accent.bg}; --pillar-border: ${accent.border}; --pillar-delay: ${0.35 + i * 0.08}s">
             <div class="conclusion-pillar-icon"><i class="fa-solid ${pillar.icon}"></i></div>
@@ -1068,12 +1079,7 @@ function bindInteractiveEvents(slideType) {
           
           // Clear active styles from rings and highlight the selected one
           rings.forEach(r => r.style.boxShadow = '');
-          const colors = {
-            comfort: '0 0 25px rgba(59, 130, 246, 0.65)',
-            fear: '0 0 25px rgba(239, 68, 68, 0.65)',
-            learning: '0 0 25px rgba(245, 158, 11, 0.65)',
-            growth: '0 0 25px rgba(16, 185, 129, 0.65)'
-          };
+          const colors = ZONE_GLOW;
           e.currentTarget.style.boxShadow = colors[zoneKey];
 
           // Update details panel content
@@ -1303,10 +1309,16 @@ function exportToPowerpoint() {
     pptx.layout = 'CUSTOM_WIDESCREEN';
     
     // Core color schemes
-    const bgDarkHex = "0B0F19";
-    const accentGoldHex = "F59E0B";
-    const textWhiteHex = "F9FAFB";
-    const textSecondaryHex = "94A3B8";
+    const bgDarkHex = PPTX_THEME.bgDark;
+    const accentGoldHex = PPTX_THEME.gold;
+    const textWhiteHex = PPTX_THEME.textWhite;
+    const textSecondaryHex = PPTX_THEME.textSecondary;
+    const accentPrimaryHex = PPTX_THEME.primary;
+    const accentSecondaryHex = PPTX_THEME.secondary;
+    const accentSuccessHex = PPTX_THEME.success;
+    const accentDangerHex = PPTX_THEME.danger;
+    const cardFillHex = PPTX_THEME.cardFill;
+    const cardBorderHex = PPTX_THEME.cardBorder;
     
     slidesData.forEach((slide) => {
       let pptxSlide = pptx.addSlide();
@@ -1353,7 +1365,7 @@ function exportToPowerpoint() {
         case "cover":
           pptxSlide.addText("THE PSYCHOLOGY OF", {
             x: 1.0, y: 1.8, w: 11.3, h: 0.4,
-            fontSize: 14, bold: true, color: "8B5CF6", fontFace: "Arial"
+            fontSize: 14, bold: true, color: accentSecondaryHex, fontFace: "Arial"
           });
           pptxSlide.addText(slide.title, {
             x: 1.0, y: 2.2, w: 11.3, h: 1.5,
@@ -1388,12 +1400,12 @@ function exportToPowerpoint() {
             // Outer rectangle box
             pptxSlide.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
               x: cardX, y: 2.3, w: 2.8, h: 3.6,
-              fill: "111827", line: { color: "1F2937", width: 1 }
+              fill: cardFillHex, line: { color: cardBorderHex, width: 1 }
             });
             // Card Title text
             pptxSlide.addText(item.title, {
               x: cardX + 0.15, y: 2.5, w: 2.5, h: 0.4,
-              fontSize: 14, bold: true, color: "6366F1", fontFace: "Arial", align: "center"
+              fontSize: 14, bold: true, color: accentPrimaryHex, fontFace: "Arial", align: "center"
             });
             // Card Desc text
             pptxSlide.addText(item.desc, {
@@ -1404,8 +1416,8 @@ function exportToPowerpoint() {
           break;
 
         case "science":
-          pptxSlide.addShape(pptx.shapes.ROUNDED_RECTANGLE, { x: 0.8, y: 2.2, w: 4.8, h: 3.5, fill: "111827", line: { color: "1F2937", width: 1 } });
-          pptxSlide.addText("Action --> Win --> Neural Reward Loop", { x: 1.0, y: 3.5, w: 4.4, h: 0.8, fontSize: 16, bold: true, color: "8B5CF6", align: "center" });
+          pptxSlide.addShape(pptx.shapes.ROUNDED_RECTANGLE, { x: 0.8, y: 2.2, w: 4.8, h: 3.5, fill: cardFillHex, line: { color: cardBorderHex, width: 1 } });
+          pptxSlide.addText("Action --> Win --> Neural Reward Loop", { x: 1.0, y: 3.5, w: 4.4, h: 0.8, fontSize: 16, bold: true, color: accentSecondaryHex, align: "center" });
           
           let scienceBullets = slide.points.map(pt => `• ${pt}`).join("\n\n");
           pptxSlide.addText(scienceBullets, { x: 6.2, y: 2.2, w: 6.3, h: 3.5, fontSize: 13, color: textWhiteHex, fontFace: "Arial" });
@@ -1415,11 +1427,11 @@ function exportToPowerpoint() {
           // Left Box
           pptxSlide.addShape(pptx.shapes.RECTANGLE, {
             x: 0.8, y: 1.8, w: 5.6, h: 4.4,
-            fill: "111827", line: { color: "10B981", width: 2 }
+            fill: cardFillHex, line: { color: accentSuccessHex, width: 2 }
           });
           pptxSlide.addText(slide.col1Title, {
             x: 1.0, y: 2.0, w: 5.2, h: 0.5,
-            fontSize: 18, bold: true, color: "10B981", fontFace: "Arial"
+            fontSize: 18, bold: true, color: accentSuccessHex, fontFace: "Arial"
           });
           let col1Text = slide.col1Items.map(it => `• ${it}`).join("\n\n");
           pptxSlide.addText(col1Text, {
@@ -1430,11 +1442,11 @@ function exportToPowerpoint() {
           // Right Box
           pptxSlide.addShape(pptx.shapes.RECTANGLE, {
             x: 6.9, y: 1.8, w: 5.6, h: 4.4,
-            fill: "111827", line: { color: "EF4444", width: 2 }
+            fill: cardFillHex, line: { color: accentDangerHex, width: 2 }
           });
           pptxSlide.addText(slide.col2Title, {
             x: 7.1, y: 2.0, w: 5.2, h: 0.5,
-            fontSize: 18, bold: true, color: "EF4444", fontFace: "Arial"
+            fontSize: 18, bold: true, color: accentDangerHex, fontFace: "Arial"
           });
           let col2Text = slide.col2Items.map(it => `• ${it}`).join("\n\n");
           pptxSlide.addText(col2Text, {
@@ -1448,11 +1460,11 @@ function exportToPowerpoint() {
             const fx = 0.6 + (idx * 2.4);
             pptxSlide.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
               x: fx, y: 2.2, w: 2.2, h: 3.5,
-              fill: "111827", line: { color: "1F2937", width: 1 }
+              fill: cardFillHex, line: { color: cardBorderHex, width: 1 }
             });
             pptxSlide.addText(`0${idx+1}`, {
               x: fx + 0.1, y: 2.4, w: 2.0, h: 0.4,
-              fontSize: 24, bold: true, color: "6366F1", opacity: 0.2, fontFace: "Arial", align: "center"
+              fontSize: 24, bold: true, color: accentPrimaryHex, opacity: 0.2, fontFace: "Arial", align: "center"
             });
             pptxSlide.addText(f.name, {
               x: fx + 0.1, y: 3.2, w: 2.0, h: 1.8,
@@ -1462,24 +1474,24 @@ function exportToPowerpoint() {
           break;
 
         case "social-media":
-          pptxSlide.addShape(pptx.shapes.ROUNDED_RECTANGLE, { x: 0.8, y: 2.0, w: 4.0, h: 3.8, fill: "090C15", line: { color: "6366F1", width: 2 } });
+          pptxSlide.addShape(pptx.shapes.ROUNDED_RECTANGLE, { x: 0.8, y: 2.0, w: 4.0, h: 3.8, fill: bgDarkHex, line: { color: accentPrimaryHex, width: 2 } });
           pptxSlide.addText("Mock Smartphone\n[ Curated Success Feed ]", { x: 1.0, y: 3.2, w: 3.6, h: 1.0, fontSize: 12, color: textSecondaryHex, align: "center" });
           
-          pptxSlide.addShape(pptx.shapes.ROUNDED_RECTANGLE, { x: 5.5, y: 2.0, w: 7.2, h: 3.8, fill: "1E1214", line: { color: "EF4444", width: 1 } });
-          pptxSlide.addText("Social Comparison Pitfalls", { x: 5.8, y: 2.2, w: 6.6, h: 0.4, fontSize: 16, bold: true, color: "EF4444" });
+          pptxSlide.addShape(pptx.shapes.ROUNDED_RECTANGLE, { x: 5.5, y: 2.0, w: 7.2, h: 3.8, fill: "1E1214", line: { color: accentDangerHex, width: 1 } });
+          pptxSlide.addText("Social Comparison Pitfalls", { x: 5.8, y: 2.2, w: 6.6, h: 0.4, fontSize: 16, bold: true, color: accentDangerHex });
           let socialBulletsStr = slide.points.map(pt => `• ${pt}`).join("\n\n");
           pptxSlide.addText(socialBulletsStr, { x: 5.8, y: 2.8, w: 6.6, h: 2.8, fontSize: 12, color: textWhiteHex, fontFace: "Arial" });
           break;
           
         case "talk":
-          pptxSlide.addShape(pptx.shapes.ROUNDED_RECTANGLE, { x: 0.8, y: 2.0, w: 5.6, h: 4.0, fill: "1E1214", line: { color: "EF4444", width: 1 } });
-          pptxSlide.addText("NEGATIVE SELF-TALK", { x: 1.0, y: 2.2, w: 5.2, h: 0.4, fontSize: 14, bold: true, color: "EF4444" });
+          pptxSlide.addShape(pptx.shapes.ROUNDED_RECTANGLE, { x: 0.8, y: 2.0, w: 5.6, h: 4.0, fill: "1E1214", line: { color: accentDangerHex, width: 1 } });
+          pptxSlide.addText("NEGATIVE SELF-TALK", { x: 1.0, y: 2.2, w: 5.2, h: 0.4, fontSize: 14, bold: true, color: accentDangerHex });
           pptxSlide.addText(`"I can't do it. I'm not ready."\n\n"I'm not good enough, they are much smarter."\n\n"If I fail, it will be embarrassing."`, {
             x: 1.0, y: 2.8, w: 5.2, h: 3.0, fontSize: 13, color: "FCA5A5", fontFace: "Arial", italic: true
           });
           
-          pptxSlide.addShape(pptx.shapes.ROUNDED_RECTANGLE, { x: 6.9, y: 2.0, w: 5.6, h: 4.0, fill: "101E17", line: { color: "10B981", width: 1 } });
-          pptxSlide.addText("POSITIVE SELF-TALK", { x: 7.1, y: 2.2, w: 5.2, h: 0.4, fontSize: 14, bold: true, color: "10B981" });
+          pptxSlide.addShape(pptx.shapes.ROUNDED_RECTANGLE, { x: 6.9, y: 2.0, w: 5.6, h: 4.0, fill: "101E17", line: { color: accentSuccessHex, width: 1 } });
+          pptxSlide.addText("POSITIVE SELF-TALK", { x: 7.1, y: 2.2, w: 5.2, h: 0.4, fontSize: 14, bold: true, color: accentSuccessHex });
           pptxSlide.addText(`"I can improve. I will give it my best try."\n\n"I will learn from this experience."\n\n"Progress is better than perfection."`, {
             x: 7.1, y: 2.8, w: 5.2, h: 3.0, fontSize: 13, color: "A7F3D0", fontFace: "Arial", italic: true
           });
@@ -1488,22 +1500,22 @@ function exportToPowerpoint() {
         case "body-language":
           pptxSlide.addImage({ path: slide.imgLow, x: 0.8, y: 0.2, w: 5.6, h: 1.6 });
           pptxSlide.addImage({ path: slide.imgHigh, x: 6.9, y: 0.2, w: 5.6, h: 1.6 });
-          pptxSlide.addShape(pptx.shapes.ROUNDED_RECTANGLE, { x: 0.8, y: 2.0, w: 5.6, h: 4.0, fill: "1E1214", line: { color: "EF4444", width: 1 } });
-          pptxSlide.addText("Defensive Posture", { x: 1.0, y: 2.2, w: 5.2, h: 0.4, fontSize: 16, bold: true, color: "EF4444" });
+          pptxSlide.addShape(pptx.shapes.ROUNDED_RECTANGLE, { x: 0.8, y: 2.0, w: 5.6, h: 4.0, fill: "1E1214", line: { color: accentDangerHex, width: 1 } });
+          pptxSlide.addText("Defensive Posture", { x: 1.0, y: 2.2, w: 5.2, h: 0.4, fontSize: 16, bold: true, color: accentDangerHex });
           let lowBText = slide.pointsLow.map(pt => `• ${pt}`).join("\n\n");
           pptxSlide.addText(lowBText, { x: 1.0, y: 2.8, w: 5.2, h: 3.0, fontSize: 12, color: textSecondaryHex });
           
-          pptxSlide.addShape(pptx.shapes.ROUNDED_RECTANGLE, { x: 6.9, y: 2.0, w: 5.6, h: 4.0, fill: "101E17", line: { color: "10B981", width: 1 } });
-          pptxSlide.addText("Confident Posture", { x: 7.1, y: 2.2, w: 5.2, h: 0.4, fontSize: 16, bold: true, color: "10B981" });
+          pptxSlide.addShape(pptx.shapes.ROUNDED_RECTANGLE, { x: 6.9, y: 2.0, w: 5.6, h: 4.0, fill: "101E17", line: { color: accentSuccessHex, width: 1 } });
+          pptxSlide.addText("Confident Posture", { x: 7.1, y: 2.2, w: 5.2, h: 0.4, fontSize: 16, bold: true, color: accentSuccessHex });
           let highBText = slide.pointsHigh.map(pt => `• ${pt}`).join("\n\n");
           pptxSlide.addText(highBText, { x: 7.1, y: 2.8, w: 5.2, h: 3.0, fontSize: 12, color: textSecondaryHex });
           break;
           
         case "comfort-zone":
-          pptxSlide.addShape(pptx.shapes.OVAL, { x: 0.8, y: 2.0, w: 4.0, h: 4.0, fill: "0F1E16", line: { color: "10B981", width: 1 } });
-          pptxSlide.addShape(pptx.shapes.OVAL, { x: 1.3, y: 2.5, w: 3.0, h: 3.0, fill: "1E180F", line: { color: "F59E0B", width: 1 } });
-          pptxSlide.addShape(pptx.shapes.OVAL, { x: 1.8, y: 3.0, w: 2.0, h: 2.0, fill: "1E0F14", line: { color: "EF4444", width: 1 } });
-          pptxSlide.addShape(pptx.shapes.OVAL, { x: 2.3, y: 3.5, w: 1.0, h: 1.0, fill: "0F141E", line: { color: "3B82F6", width: 1 } });
+          pptxSlide.addShape(pptx.shapes.OVAL, { x: 0.8, y: 2.0, w: 4.0, h: 4.0, fill: "0F1E16", line: { color: accentSuccessHex, width: 1 } });
+          pptxSlide.addShape(pptx.shapes.OVAL, { x: 1.3, y: 2.5, w: 3.0, h: 3.0, fill: "1E180F", line: { color: accentGoldHex, width: 1 } });
+          pptxSlide.addShape(pptx.shapes.OVAL, { x: 1.8, y: 3.0, w: 2.0, h: 2.0, fill: "1E0F14", line: { color: accentDangerHex, width: 1 } });
+          pptxSlide.addShape(pptx.shapes.OVAL, { x: 2.3, y: 3.5, w: 1.0, h: 1.0, fill: "0F141E", line: { color: accentSecondaryHex, width: 1 } });
           
           pptxSlide.addText("Concentric Layers:\n1. Comfort Zone\n2. Fear Zone\n3. Learning Zone\n4. Growth Zone", {
             x: 1.3, y: 6.0, w: 3.0, h: 0.8, fontSize: 9, color: textSecondaryHex, fontFace: "Arial", align: "center"
@@ -1511,11 +1523,11 @@ function exportToPowerpoint() {
 
           pptxSlide.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
             x: 5.5, y: 2.0, w: 7.2, h: 4.0,
-            fill: "111827", line: { color: "1F2937", width: 1 }
+            fill: cardFillHex, line: { color: cardBorderHex, width: 1 }
           });
           pptxSlide.addText("Where Growth Begins", {
             x: 5.8, y: 2.2, w: 6.6, h: 0.4,
-            fontSize: 16, bold: true, color: "F59E0B", fontFace: "Arial"
+            fontSize: 16, bold: true, color: accentGoldHex, fontFace: "Arial"
           });
           pptxSlide.addText("• Comfort Zone: safe, low stress, zero progress.\n• Fear Zone: self-doubt, excuses, peer pressure.\n• Learning Zone: problem solving, acquiring new skills.\n• Growth Zone: set goals, conquer dreams, find purpose.", {
             x: 5.8, y: 2.8, w: 6.6, h: 3.0,
@@ -1528,11 +1540,11 @@ function exportToPowerpoint() {
             const hx = 0.8 + (index * 4.0);
             pptxSlide.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
               x: hx, y: 2.0, w: 3.6, h: 4.0,
-              fill: "111827", line: { color: "1F2937", width: 1 }
+              fill: cardFillHex, line: { color: cardBorderHex, width: 1 }
             });
             pptxSlide.addText(item.title, {
               x: hx + 0.2, y: 2.4, w: 3.2, h: 0.5,
-              fontSize: 16, bold: true, color: "6366F1", fontFace: "Arial", align: "center"
+              fontSize: 16, bold: true, color: accentPrimaryHex, fontFace: "Arial", align: "center"
             });
             pptxSlide.addText(item.desc, {
               x: hx + 0.2, y: 3.2, w: 3.2, h: 2.4,
@@ -1542,33 +1554,33 @@ function exportToPowerpoint() {
           break;
           
         case "cycle":
-          pptxSlide.addShape(pptx.shapes.ROUNDED_RECTANGLE, { x: 1.0, y: 2.2, w: 3.2, h: 1.2, fill: "1E1214", line: { color: "EF4444", width: 1 } });
+          pptxSlide.addShape(pptx.shapes.ROUNDED_RECTANGLE, { x: 1.0, y: 2.2, w: 3.2, h: 1.2, fill: "1E1214", line: { color: accentDangerHex, width: 1 } });
           pptxSlide.addText("Overthinking &\nAnalysis Paralysis", { x: 1.0, y: 2.3, w: 3.2, h: 1.0, fontSize: 13, bold: true, color: "FCA5A5", align: "center" });
           
           pptxSlide.addText("-->", { x: 4.4, y: 2.6, w: 0.6, h: 0.4, fontSize: 24, color: textSecondaryHex, align: "center" });
           
-          pptxSlide.addShape(pptx.shapes.ROUNDED_RECTANGLE, { x: 5.1, y: 2.2, w: 3.2, h: 1.2, fill: "111827", line: { color: "1F2937", width: 1 } });
+          pptxSlide.addShape(pptx.shapes.ROUNDED_RECTANGLE, { x: 5.1, y: 2.2, w: 3.2, h: 1.2, fill: cardFillHex, line: { color: cardBorderHex, width: 1 } });
           pptxSlide.addText("Fear, Doubt &\nAvoidance of Action", { x: 5.1, y: 2.3, w: 3.2, h: 1.0, fontSize: 13, bold: true, color: textWhiteHex, align: "center" });
           
           pptxSlide.addText("-->", { x: 8.5, y: 2.6, w: 0.6, h: 0.4, fontSize: 24, color: textSecondaryHex, align: "center" });
           
-          pptxSlide.addShape(pptx.shapes.ROUNDED_RECTANGLE, { x: 9.2, y: 2.2, w: 3.2, h: 1.2, fill: "111827", line: { color: "1F2937", width: 1 } });
+          pptxSlide.addShape(pptx.shapes.ROUNDED_RECTANGLE, { x: 9.2, y: 2.2, w: 3.2, h: 1.2, fill: cardFillHex, line: { color: cardBorderHex, width: 1 } });
           pptxSlide.addText("Fewer Experiences &\nSkills Gaps", { x: 9.2, y: 2.3, w: 3.2, h: 1.0, fontSize: 13, bold: true, color: textWhiteHex, align: "center" });
           
-          pptxSlide.addShape(pptx.shapes.ROUNDED_RECTANGLE, { x: 5.1, y: 4.2, w: 3.2, h: 1.2, fill: "1E1711", line: { color: "F59E0B", width: 1 } });
-          pptxSlide.addText("REDUCED CONFIDENCE\n(Cycle Repeats)", { x: 5.1, y: 4.3, w: 3.2, h: 1.0, fontSize: 13, bold: true, color: "F59E0B", align: "center" });
+          pptxSlide.addShape(pptx.shapes.ROUNDED_RECTANGLE, { x: 5.1, y: 4.2, w: 3.2, h: 1.2, fill: "1E1711", line: { color: accentGoldHex, width: 1 } });
+          pptxSlide.addText("REDUCED CONFIDENCE\n(Cycle Repeats)", { x: 5.1, y: 4.3, w: 3.2, h: 1.0, fontSize: 13, bold: true, color: accentGoldHex, align: "center" });
           
           pptxSlide.addText("<-- Loop --", { x: 1.5, y: 4.6, w: 3.2, h: 0.4, fontSize: 14, color: textSecondaryHex, align: "center" });
           break;
           
         case "iceberg":
-          pptxSlide.addShape(pptx.shapes.ISOSCELES_TRIANGLE, { x: 4.0, y: 2.0, w: 5.3, h: 4.0, fill: "1E293B", line: { color: "3B82F6", width: 1 } });
-          pptxSlide.addText("SUCCESS (What is seen)", { x: 4.0, y: 2.5, w: 5.3, h: 0.4, fontSize: 14, bold: true, color: "10B981", align: "center" });
+          pptxSlide.addShape(pptx.shapes.ISOSCELES_TRIANGLE, { x: 4.0, y: 2.0, w: 5.3, h: 4.0, fill: "1E293B", line: { color: accentSecondaryHex, width: 1 } });
+          pptxSlide.addText("SUCCESS (What is seen)", { x: 4.0, y: 2.5, w: 5.3, h: 0.4, fontSize: 14, bold: true, color: accentSuccessHex, align: "center" });
           
-          pptxSlide.addText("Water Line ----------------------------------------------------", { x: 1.0, y: 3.2, w: 11.3, h: 0.3, fontSize: 10, color: "3B82F6", align: "center" });
+          pptxSlide.addText("Water Line ----------------------------------------------------", { x: 1.0, y: 3.2, w: 11.3, h: 0.3, fontSize: 10, color: accentSecondaryHex, align: "center" });
           
           pptxSlide.addText("FAILURES • HARD WORK • LATE NIGHTS • REJECTIONS • SELF-DOUBT", { x: 2.0, y: 4.5, w: 9.3, h: 0.6, fontSize: 11, bold: true, color: textSecondaryHex, align: "center" });
-          pptxSlide.addText("The Submerged Foundation", { x: 2.0, y: 5.2, w: 9.3, h: 0.4, fontSize: 12, italic: true, color: "3B82F6", align: "center" });
+          pptxSlide.addText("The Submerged Foundation", { x: 2.0, y: 5.2, w: 9.3, h: 0.4, fontSize: 12, italic: true, color: accentSecondaryHex, align: "center" });
           break;
           
         case "stories":
@@ -1577,15 +1589,15 @@ function exportToPowerpoint() {
             pptxSlide.addImage({ path: ex.image, x: sx, y: 0.3, w: 5.5, h: 1.5 });
             pptxSlide.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
               x: sx, y: 2.0, w: 5.5, h: 4.0,
-              fill: "111827", line: { color: "1F2937", width: 1 }
+              fill: cardFillHex, line: { color: cardBorderHex, width: 1 }
             });
             pptxSlide.addText(ex.author, {
               x: sx + 0.3, y: 2.3, w: 4.9, h: 0.4,
-              fontSize: 16, bold: true, color: "8B5CF6", fontFace: "Arial"
+              fontSize: 16, bold: true, color: accentSecondaryHex, fontFace: "Arial"
             });
             pptxSlide.addText(ex.role, {
               x: sx + 0.3, y: 2.7, w: 4.9, h: 0.3,
-              fontSize: 11, color: "F59E0B", fontFace: "Arial"
+              fontSize: 11, color: accentGoldHex, fontFace: "Arial"
             });
             pptxSlide.addText(`"${ex.quote}"`, {
               x: sx + 0.3, y: 3.2, w: 4.9, h: 2.5,
@@ -1599,8 +1611,8 @@ function exportToPowerpoint() {
             const rx = 0.8 + (index % 2) * 6.0;
             const ry = 2.0 + Math.floor(index / 2) * 2.1;
             
-            pptxSlide.addShape(pptx.shapes.ROUNDED_RECTANGLE, { x: rx, y: ry, w: 5.6, h: 1.8, fill: "111827", line: { color: "1F2937", width: 1 } });
-            pptxSlide.addText(item.title, { x: rx + 0.2, y: ry + 0.2, w: 5.2, h: 0.3, fontSize: 13, bold: true, color: "F59E0B" });
+            pptxSlide.addShape(pptx.shapes.ROUNDED_RECTANGLE, { x: rx, y: ry, w: 5.6, h: 1.8, fill: cardFillHex, line: { color: cardBorderHex, width: 1 } });
+            pptxSlide.addText(item.title, { x: rx + 0.2, y: ry + 0.2, w: 5.2, h: 0.3, fontSize: 13, bold: true, color: accentGoldHex });
             pptxSlide.addText(item.desc, { x: rx + 0.2, y: ry + 0.6, w: 5.2, h: 1.0, fontSize: 11, color: textSecondaryHex });
           });
           break;
@@ -1610,7 +1622,7 @@ function exportToPowerpoint() {
             const sy = 1.8 + (idx * 0.9);
             pptxSlide.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
               x: 0.8, y: sy, w: 11.7, h: 0.7,
-              fill: "111827", line: { color: "1F2937", width: 1 }
+              fill: cardFillHex, line: { color: cardBorderHex, width: 1 }
             });
             pptxSlide.addText(`${idx+1}. ${st.title} : ${st.desc}`, {
               x: 1.1, y: sy + 0.1, w: 11.1, h: 0.5,
@@ -1631,7 +1643,7 @@ function exportToPowerpoint() {
           const conclusionText = `${slide.lead} ${slide.emphasis}`;
           pptxSlide.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
             x: 1.0, y: 2.0, w: 11.3, h: 3.8,
-            fill: "111827", line: { color: "8B5CF6", width: 1 }
+            fill: cardFillHex, line: { color: accentSecondaryHex, width: 1 }
           });
           pptxSlide.addText(conclusionText, {
             x: 1.5, y: 2.5, w: 10.3, h: 2.8,
@@ -1642,11 +1654,11 @@ function exportToPowerpoint() {
         case "thank-you":
           pptxSlide.addText(slide.title, {
             x: 1.0, y: 2.2, w: 11.3, h: 1.5,
-            fontSize: 54, bold: true, color: "F59E0B", fontFace: "Arial", align: "center"
+            fontSize: 54, bold: true, color: accentGoldHex, fontFace: "Arial", align: "center"
           });
           pptxSlide.addText(slide.subtitle, {
             x: 1.0, y: 3.8, w: 11.3, h: 0.8,
-            fontSize: 24, color: "8B5CF6", fontFace: "Arial", align: "center"
+            fontSize: 24, color: accentSecondaryHex, fontFace: "Arial", align: "center"
           });
           pptxSlide.addText("Thank You for Your Time!", {
             x: 1.0, y: 4.8, w: 11.3, h: 0.5,
