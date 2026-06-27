@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Psychology of Self-Confidence | Interactive Presentation</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f172a'/%3E%3Cpath d='M20 36c6-14 18-14 24 0' fill='none' stroke='%2338bdf8' stroke-width='5' stroke-linecap='round'/%3E%3Ccircle cx='32' cy='25' r='7' fill='%23f8fafc'/%3E%3C/svg%3E" />
+  <!-- Google Fonts: Outfit (modern, tech-savvy headers) and Plus Jakarta Sans (ultra-clean body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- PptxGenJS script for PowerPoint Generation -->
+  <script src="https://cdn.jsdelivr.net/gh/gitbrent/PptxGenJS@3.12.0/dist/pptxgen.bundle.js"></script>
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="presentation-root">
+    <!-- Main presentation stage container (covers everything including control bar for clean fullscreen) -->
+    <div id="slide-stage" class="slide-stage-container">
+      
+      <!-- Slide progress indicator -->
+      <div id="progress-bar-container" class="progress-bar-container">
+        <div id="progress-indicator" class="progress-indicator-fill"></div>
+      </div>
+
+      <!-- Slide list sidebar drawer (hidden by default) -->
+      <aside id="slides-sidebar" class="slides-sidebar hidden">
+        <div class="sidebar-header">
+          <h3>Slide Directory</h3>
+          <button id="btn-close-sidebar" class="btn-close-sidebar" aria-label="Close sidebar">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <ul id="slide-list-items" class="slide-list-items"></ul>
+      </aside>
+      
+      <!-- Main Active Slide Viewer -->
+      <main id="active-slide-container" class="active-slide-container"></main>
+      
+      <!-- Glassmorphic floating control dock -->
+      <footer class="controls-dock">
+        <button id="btn-sidebar" class="dock-btn" title="Open Slide Directory" aria-label="Open directory">
+          <i class="fa-solid fa-list-ul"></i>
+        </button>
+        
+        <div class="navigation-group">
+          <button id="nav-prev" class="dock-btn nav-btn" title="Previous Slide (Left Arrow)" aria-label="Previous slide">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          
+          <div class="slide-counter">
+            <span id="current-index-num">1</span>
+            <span class="counter-divider">/</span>
+            <span id="total-slides-num">21</span>
+          </div>
+          
+          <button id="nav-next" class="dock-btn nav-btn" title="Next Slide (Right Arrow/Space)" aria-label="Next slide">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+
+        <div class="options-group">
+          <button id="btn-autoplay" class="dock-btn" title="Toggle Autoplay (8s per slide)" aria-label="Toggle autoplay">
+            <i class="fa-solid fa-play"></i> <span>Play</span>
+          </button>
+          
+          <button id="btn-presenter" class="dock-btn" title="Toggle Presenter Mode (Second Screen Console)" aria-label="Presenter console">
+            <i class="fa-solid fa-microphone-lines"></i> <span>Speaker Notes</span>
+          </button>
+
+          <button id="btn-pptx" class="dock-btn accent-btn" title="Export Presentation to PowerPoint (.pptx)" aria-label="Export to PowerPoint">
+            <i class="fa-solid fa-file-powerpoint"></i> <span>Export PPTX</span>
+          </button>
+          
+          <button id="btn-fullscreen" class="dock-btn" title="Toggle Fullscreen Mode (F11)" aria-label="Toggle fullscreen">
+            <i class="fa-solid fa-expand"></i>
+          </button>
+        </div>
+      </footer>
+    </div>
+    
+    <!-- Presenter Notes & Teleprompter Console (hidden by default) -->
+    <section id="presenter-console" class="presenter-console-panel hidden">
+      <div class="console-header">
+        <div class="console-title"><i class="fa-solid fa-chalkboard-user"></i> Presenter Control Room</div>
+        <div class="timer-widget">
+          <i class="fa-solid fa-clock"></i>
+          <span id="timer-display">00:00:00</span>
+          <button id="btn-timer-toggle" title="Pause/Resume Timer"><i class="fa-solid fa-pause"></i></button>
+          <button id="btn-timer-reset" title="Reset Timer"><i class="fa-solid fa-arrow-rotate-left"></i></button>
+        </div>
+      </div>
+      
+      <div class="console-body">
+        <!-- Notes box: English text alignment -->
+        <div class="notes-panel">
+          <div class="panel-label">SPEAKER NOTES (AUDIO GUIDE)</div>
+          <div id="notes-content-box" class="notes-content"></div>
+        </div>
+        
+        <!-- Next slide preview -->
+        <div class="preview-panel">
+          <div class="panel-label">NEXT SLIDE PREVIEW</div>
+          <div id="next-slide-preview-box" class="preview-content"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  <!-- Presentation Engine Javascript -->
+  <script src="app.js"></script>
+</body>
+</html>
