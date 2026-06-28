@@ -147,34 +147,7 @@ const slidesData = [
     `
   },
   {
-    id: 9,
-    title: "Fixed Mindset vs Growth Mindset",
-    subtitle: "Based on the Book 'Mindset' by Carol S. Dweck",
-    type: "comparison",
-    col1Title: "Fixed Mindset",
-    col1Icon: "fa-lock",
-    col1Class: "negative",
-    col1Items: [
-      "Avoids challenges to feel safe.",
-      "Fears failure as proof of lack of talent.",
-      "Gives up easily at the first obstacle.",
-      "Threatened by the success of others."
-    ],
-    col2Title: "Growth Mindset",
-    col2Icon: "fa-unlock-keyhole",
-    col2Class: "positive",
-    col2Items: [
-      "Sees challenges as opportunities to grow.",
-      "Learns from mistakes and values feedback.",
-      "Persists and puts in effort to improve.",
-      "Finds inspiration in others' success."
-    ],
-    speakerNotes: `
-      <p><strong>What to say:</strong></p>
-      <p>In her book <strong>Mindset</strong>, Carol Dweck explains a powerful difference in outlook:</p>
-      <p><strong>Fixed Mindset Individuals:</strong> Believe intelligence and talent are static traits. They avoid challenges because they view failure as proof of a lack of ability.</p>
-      <p><strong>Growth Mindset Individuals:</strong> View challenges as paths to learning. They realize effort, strategies, and persistence build talent and lasting confidence over time.</p>
-    `
+
   },
   {
     id: 10,
