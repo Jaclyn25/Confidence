@@ -146,9 +146,7 @@ const slidesData = [
       <p>By shifting to constructive self-talk—'I am learning, I will give it a try'—performance, mood, and problem-solving capabilities immediately improve.</p>
     `
   },
-  {
 
-  },
   {
     id: 10,
     title: "The Comfort Zone",
